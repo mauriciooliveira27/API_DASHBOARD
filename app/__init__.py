@@ -2,7 +2,7 @@ from flask import Flask
 from dotenv import load_dotenv
 import os
 from .models import DashBoard, db
-from .urls import urls
+from .views import views
 
 class ApiApplication:
 
@@ -26,7 +26,7 @@ class ApiApplication:
     
 
     def register_blueprints(self):
-        self.app.register_blueprint(urls, url_prefix = '/api')
+        self.app.register_blueprint(views, url_prefix = '/api')
 
 
     def initialization(self):
