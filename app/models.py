@@ -3,36 +3,49 @@ from datetime import datetime
 
 db = SQLAlchemy()
 
-class Query:
-    ...
+class QueryDB:
 
-class DashBoard(db.Model, Query):
-    id = db.Column(db.Integer, primary_key = True, auto_increment = True)
-    tensao = db.Column(db.Float(), nullable = False)
-    tensao_f1 = db.Column(db.Float(), nullable = False)
-    tensao_f2 = db.Column(db.Float(), nullable = False)
-    tensao_f3 = db.Column(db.Float(), nullable = False)
-    corrente = db.Column(db.Float(), nullable = False) 
-    corrente_f1 = db.Column(db.Float(), nullable = False) 
-    corrente_f2 = db.Column(db.Float(), nullable = False)
-    potencia_ativa = db.Column(db.Float(), nullable = False)
-    potencia_ativa_f1 = db.Column(db.Float(), nullable = False)
-    potencia_ativa_f2 = db.Column(db.Float(), nullable = False)
-    potencia_ativa_f3 = db.Column(db.Float(), nullable = False)
-    potencia_reativa = db.Column(db.Float(), nullable = False)
-    potencia_reativa_f1 = db.Column(db.Float(), nullable = False)
-    potencia_reativa_f2 = db.Column(db.Float(), nullable = False)
-    potencia_reativa_f3 = db.Column(db.Float(), nullable = False)
-    potencia_aparente = db.Column(db.Float(), nullable = False)
-    potencia_aparente_f1 = db.Column(db.Float(), nullable = False)
-    potencia_aparente_f2 = db.Column(db.Float(), nullable = False)
-    potencia_aparente_f3 = db.Column(db.Float(), nullable = False)
-    fp_circuito = db.Column(db.Float(), nullable = False)
-    fP_fase1 = db.Column(db.Float(), nullable = False)
-    fP_fase2 = db.Column(db.Float(), nullable = False)
-    fP_fase3 = db.Column(db.Float(), nullable = False)
-    frequencia = db.Column(db.Float(), nullable = False)
-    data = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+    def __repr__(self) -> str:
+
+        return f'{ self.id}'
+
+    @classmethod
+    def get_id(cls):
+        return cls.query.get(1)
+
+
+
+
+class DashBoard(db.Model, QueryDB):
+
+    __tablename__ = 'dash'
+
+    id = db.Column(db.Integer, primary_key = True, autoincrement = True)
+    tensao = db.Column(db.Float(), nullable = True)
+    tensao_f1 = db.Column(db.Float(), nullable = True)
+    tensao_f2 = db.Column(db.Float(), nullable = True)
+    tensao_f3 = db.Column(db.Float(), nullable = True)
+    corrente = db.Column(db.Float(), nullable = True) 
+    corrente_f1 = db.Column(db.Float(), nullable = True) 
+    corrente_f2 = db.Column(db.Float(), nullable = True)
+    potencia_ativa = db.Column(db.Float(), nullable = True)
+    potencia_ativa_f1 = db.Column(db.Float(), nullable = True)
+    potencia_ativa_f2 = db.Column(db.Float(), nullable = True)
+    potencia_ativa_f3 = db.Column(db.Float(), nullable = True)
+    potencia_reativa = db.Column(db.Float(), nullable = True)
+    potencia_reativa_f1 = db.Column(db.Float(), nullable = True)
+    potencia_reativa_f2 = db.Column(db.Float(), nullable = True)
+    potencia_reativa_f3 = db.Column(db.Float(), nullable = True)
+    potencia_aparente = db.Column(db.Float(), nullable = True)
+    potencia_aparente_f1 = db.Column(db.Float(), nullable = True)
+    potencia_aparente_f2 = db.Column(db.Float(), nullable = True)
+    potencia_aparente_f3 = db.Column(db.Float(), nullable = True)
+    fp_circuito = db.Column(db.Float(), nullable = True)
+    fP_fase1 = db.Column(db.Float(), nullable = True)
+    fP_fase2 = db.Column(db.Float(), nullable = True)
+    fP_fase3 = db.Column(db.Float(), nullable = True)
+    frequencia = db.Column(db.Float(), nullable = True)
+    data = db.Column(db.DateTime, default=datetime.utcnow, nullable=True)
 
 
 class Calculate:
