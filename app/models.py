@@ -10,8 +10,8 @@ class QueryDB:
         return f'{ self.id}'
 
     @classmethod
-    def get_id(cls):
-        return cls.query.get(1)
+    def get_last_record_by_id(cls):
+        return cls.query.order_by(db.desc(cls.id)).first()
 
 
 
